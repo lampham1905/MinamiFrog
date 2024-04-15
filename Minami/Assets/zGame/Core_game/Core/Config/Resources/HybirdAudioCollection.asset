@@ -1,0 +1,347 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750d787d677af9644a09437237ef544f, type: 3}
+  m_Name: HybirdAudioCollection
+  m_EditorClassIdentifier: 
+  SFXClips:
+  - fileName:
+    - Sfx_Button_Open
+    id: 1
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: 6717bdc7f577b114b8df0dbd69658a51, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Button_Cancel
+    id: 2
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: ed86ca40acef1334f847915c28ce5e29, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reward
+    id: 3
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: 45505486a7c418e48ad1e6f78994c7ae, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reward_Receive
+    id: 4
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: cc15c57d1ee5dac44adbe587e7bd9616, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Spin
+    id: 5
+    limitNumber: 2
+    clip:
+    - {fileID: 0}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Screen_Switch
+    id: 6
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: ca273ab682a531249b77324b403cad2e, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Success
+    id: 7
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: f94016c3d3097dc47b1202d87db2a1e8, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Victory
+    id: 8
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: d5d89ae8cef1d26409f75ecc05b79a95, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Defeat
+    id: 9
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: fd5a7cc050876ca48b0a8f97cce99458, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Touch_To_Aim
+    id: 10
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: 7464b292f6a3ab84b9ea706cac1f4707, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Aiming
+    id: 11
+    limitNumber: 2
+    clip:
+    - {fileID: 0}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Hit
+    id: 12
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: 4c0ba887843f5fb4a916108d33fde58c, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Enemy_Dead
+    id: 13
+    limitNumber: 3
+    clip:
+    - {fileID: 8300000, guid: 129872fbecd1419419096cfc9114d5df, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Boss_Dead
+    id: 14
+    limitNumber: 3
+    clip:
+    - {fileID: 8300000, guid: a3d0b88b9f02dba428dbdf367c8dd7e2, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Explosion
+    id: 15
+    limitNumber: 3
+    clip:
+    - {fileID: 8300000, guid: 93688a98a8c1ab7439e531e2b670bff3, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Explosion_Small
+    id: 0
+    limitNumber: 3
+    clip:
+    - {fileID: 8300000, guid: 9a96b4a9a8a9b0943bfe9d627d28840f, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Hit_Critical
+    id: 16
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: e89cbcd8e0bdc3b4b96ff5c93dfb9b2e, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Hit_Slime
+    id: 17
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: 4ff010cd6eab4a246a4ee827f5c4d610, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Slime_Dead
+    id: 18
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: fc287cb8f269e7147b4bb852b9196f7b, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Coin
+    id: 19
+    limitNumber: 2
+    clip:
+    - {fileID: 8300000, guid: 094f4371404acab438483d5f53f8b8a9, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_footstep_1
+    - Sfx_footstep_2
+    - Sfx_footstep_3
+    - Sfx_footstep_4
+    id: 20
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: b5daa412e2622a5478f89523c42dc0e9, type: 3}
+    - {fileID: 8300000, guid: 738eaddbca0581d4bbe7f4b96742aa2d, type: 3}
+    - {fileID: 8300000, guid: 04287132d9b7c8a4dad62022a3779644, type: 3}
+    - {fileID: 8300000, guid: 2774df65efd409e4e98c623bb50527c5, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Revolver
+    id: 21
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 86bbaf7471262e846b2ff6d5c9ed9aa2, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Rifle
+    id: 22
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 1e13291135eebd14795081d5c16fe7f1, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Shotgun
+    id: 23
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 4ab9c85098283a748b2e00e3d4f12014, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Crossbow
+    id: 24
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 31c7c53af1ecc1348b14270ecf8ff51b, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Revolver
+    id: 25
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: b565a5025a0431d4abba1b3994209266, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Rifle
+    id: 26
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 79eb08401a8f554408ce4247fe15e426, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Shotgun
+    id: 27
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 3f343cfddddb0ec4b9d8dbc1d58da921, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Crossbow
+    id: 28
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 9ad939cd68fea094d94925c06fe86a7f, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Sol
+    id: 29
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 9aca6978253eb7d4ab3b3956ce133471, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Sol
+    id: 30
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 40047e8b33254cc42a9ca93c6b524120, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Luna
+    id: 31
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: cbed27b93c1851a4d96cbfeda6cfa9ec, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Luna
+    id: 32
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 676ab4069fbd7f34cab9139eb132f9e1, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Shredder
+    id: 33
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: d10880fbf0eb6984d99612ba7364f22d, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Shredder
+    id: 34
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: cc2da57c7b6a4334892d3a5d67fbb00f, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Mayhem
+    id: 35
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 41342b76a2f22e84d81dce973fead434, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Mayhem
+    id: 36
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 5d944a00bfb3704498e6b9dacef8fa94, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Shoot_Desolator
+    id: 37
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: bfb7107790a5b2a4dbd855efe41f564b, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Reload_Desolator
+    id: 38
+    limitNumber: 5
+    clip:
+    - {fileID: 8300000, guid: 93eac1c46671025439a2132ad028b8a0, type: 3}
+    isJustPlay: 0
+  musicClips:
+  - fileName:
+    - Music_Start_Screen
+    id: 1
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: 2fd195b9af16c9d439f2a346bff51069, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Music_Main_Menu
+    id: 2
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: a5d56791dfc52ed428c6ab331eb91382, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Music_Normal_Level
+    - Music_Normal_Level_2
+    - Music_Normal_Level_3
+    - Music_Normal_Level_4
+    - Music_Normal_Level_5
+    - Music_Normal_Level_6
+    id: 3
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: 3f1c98b952bf17048acbae213d9c2894, type: 3}
+    - {fileID: 8300000, guid: f0f0a93f0ffe24347b5ea87ecf184f33, type: 3}
+    - {fileID: 8300000, guid: b3e3694d76c16b94fa8219d180fb35cf, type: 3}
+    - {fileID: 8300000, guid: 5bb12d646c85b474281da3c681f59c61, type: 3}
+    - {fileID: 8300000, guid: 550a87169caaf604b9020ec21926a664, type: 3}
+    - {fileID: 8300000, guid: d30158c4bb1ab2c4daf30c5842d8c239, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Music_Boss_Level
+    id: 4
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: ce5cd285516d3054e89fd34adcc474af, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Background_1
+    id: 5
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: 64ba91f5be2766f489c53a0281a7a04e, type: 3}
+    isJustPlay: 0
+  - fileName:
+    - Sfx_Background_2
+    id: 6
+    limitNumber: 1
+    clip:
+    - {fileID: 8300000, guid: 37c27d525ea222144ba7894009464f49, type: 3}
+    isJustPlay: 0

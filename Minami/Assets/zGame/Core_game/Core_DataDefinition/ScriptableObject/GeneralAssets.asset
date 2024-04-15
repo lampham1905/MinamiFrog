@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea89dc438e314214c802fed5b3bf80c6, type: 3}
+  m_Name: GeneralAssets
+  m_EditorClassIdentifier: 
+  heroIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  heroIconLocks:
+    source:
+    - {fileID: 0}
+    defaultAsset: {fileID: 0}
+  heroIconSmall:
+    source: []
+    defaultAsset: {fileID: 0}
+  enemyIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  currencyIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  commonIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  skillIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  equipmentIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  mapIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  rarityWeaponSlots:
+    source: []
+    defaultAsset: {fileID: 0}
+  raritySlots:
+    source: []
+    defaultAsset: {fileID: 0}
+  raritySlotsUpLayout:
+    source: []
+    defaultAsset: {fileID: 0}
+  weaponRarityIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  shopItemIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  chestIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  talentIcons:
+    source: []
+    defaultAsset: {fileID: 0}
+  rarityLightColors: []
+  rarityDarkColors: []
+  perkGroupIcons:
+    source: []
+    defaultAsset: {fileID: 0}

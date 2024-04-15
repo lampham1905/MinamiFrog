@@ -1,0 +1,10 @@
+Trying to add new property 'svn:ignore'
+but the property already exists.
+<<<<<<< (local property value)
+Common*
+Editor*
+ObscuredTypes*
+||||||| (incoming 'changed from' value)
+=======
+*
+>>>>>>> (incoming 'changed to' value)
