@@ -10,7 +10,9 @@ namespace Lam
     {
         private static GameManager m_Instance;
         public static GameManager Instance => m_Instance;
-        public BuildingSystem buildingSystem;
+       
+        public PathManager m_pathManager;
+        public BuildingSystem buildingSystem ;
         private void Awake()
         {
             if (m_Instance == null)
@@ -20,7 +22,9 @@ namespace Lam
         }
         private void Start()
         {
-            GameInit.Instance.Init();
+            Application.targetFrameRate = 60;
         }
+        
+        
     }
 }

@@ -11,7 +11,7 @@ namespace Lam
     public class DataInGame : DataManager
     {
         public const bool ENCRYPT_FILE = false;
-        public const bool ENCRYPT_SAVER = true;
+        public const bool ENCRYPT_SAVER = false;
         public static bool USE_CLOUD_SAVE = true;
         public static readonly Encryption FILE_ENRYPTION = new Encryption();
         public static DataInGame mInstance;
@@ -20,7 +20,9 @@ namespace Lam
         public bool Initialized => mInitialized;
 
         private BuildingGroup m_BuildingGroup;
+        private StatGroup m_StatGroup;
         public BuildingGroup BuildingGroup => m_BuildingGroup;
+        public StatGroup StatGroup => m_StatGroup;
         private DataSaver m_DataSaver;
         private void Awake()
         {
@@ -37,25 +39,25 @@ namespace Lam
                 return LoadFile(pPath, null);
         }
         
-        public void Init()
+        public void InitData()
         {
             if (mInitialized) return;
             mInitialized = true;
-            m_DataSaver = DataSaverContainer.CreateSaver("main", ENCRYPT_SAVER ? FILE_ENRYPTION : null); 
+            m_DataSaver = DataSaverContainer.CreateSaver("maingame", ENCRYPT_SAVER ? FILE_ENRYPTION : null); 
             BuildData.Instance.Init();
             //------------------------------------------------------------------
             m_BuildingGroup = AddMainDataGroup(new BuildingGroup(1), m_DataSaver);
-
-            // for (int i = 0; i < dataDefinition.coumt; i++)
-            // {
-            //     
-            // }
-            
+            m_StatGroup = AddMainDataGroup(new StatGroup(2), m_DataSaver);
+            BaseInit();
             
             //------------------------
-            ManagerEvent.RaiseEvent(EventCMD.SHOWBUILDING);
-            Debug.Log("cc");
+            m_StatGroup.Init();
+            ManagerEvent.RaiseEvent(EventCMD.SHOWBUILDING, m_BuildingGroup.listBuildingData);
         }
-        
+
+        public void BaseInit()
+        {
+            base.Init();
+        }
     }
 }

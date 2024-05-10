@@ -1,1 +1,0 @@
-[{"name":"house","des":"fsdfsdf","price":50},{"id":1,"name":"ramen","des":"bvcbcvbc","price":100},{"id":2,"name":"park","des":"rwwwe","price":150}]

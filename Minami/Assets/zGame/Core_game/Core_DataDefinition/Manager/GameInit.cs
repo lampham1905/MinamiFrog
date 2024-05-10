@@ -60,9 +60,10 @@ namespace Lam.zGame.Core_game.Core_DataDefinition.Manager
 
             Application.targetFrameRate = 60;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
+            //Init UI
+            UIGamePlay.Instance.Init();
             //1. Init data
-            Lam.DataInGame.Instance.Init();
+            DataInGame.Instance.InitData();
             //2. Init services
             RFirebaseManager.Init(FirebaseInitEvent);
 #if ACTIVE_FACEBOOK

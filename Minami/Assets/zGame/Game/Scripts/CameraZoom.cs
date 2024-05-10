@@ -2,76 +2,79 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
-        public float zoomSpeed = 0.5f;
-    public float dragSpeed = 2f;
-    public float minZoomDistance = 2f;
-    public float maxZoomDistance = 10f;
+    public float dragSpeed = 2f; // Tốc độ di chuyển khi vuốt
+    public float pinchSpeed = 2f; // Tốc độ phóng to/thu nhỏ khi pinch
 
-    private Camera mainCamera;
-    private Vector2? dragOrigin;
-    private float initialCameraSize;
+    public float minOrthoSize = 2f; // Kích thước góc nhìn tối thiểu (phóng to nhất)
+    public float maxOrthoSize = 10f; // Kích thước góc nhìn tối đa (thu nhỏ nhất)
 
-    void Start()
-    {
-        mainCamera = Camera.main;
-        initialCameraSize = mainCamera.orthographicSize;
-    }
-
+    private Vector3 dragOrigin; // Vị trí ban đầu khi bắt đầu vuốt
+    [SerializeField] private Camera mainCamera;
+    private Vector3 newPos;
     void Update()
     {
-        // Phóng to thu nhỏ
-        HandlePinchZoom();
+// #if UNITY_EDITOR
+//         // Kiểm tra xem người dùng có sử dụng chuột để kéo không
+//         if (Input.GetMouseButtonDown(0))
+//         {
+//             dragOrigin = Input.mousePosition;
+//             return;
+//         }
+//
+//         if (!Input.GetMouseButton(0)) return;
+//
+//          newPos = mainCamera.ScreenToViewportPoint(dragOrigin - Input.mousePosition);
+//         Vector3 move = new Vector3(newPos.x * dragSpeed, 0, newPos.y * dragSpeed);
+//
+//         mainCamera.transform.Translate(move, Space.World);
+//
+//         // Kiểm tra xem người dùng có sử dụng con lăn chuột để phóng to/thu nhỏ không
+//         float scroll = Input.GetAxis("Mouse ScrollWheel");
+//         if (scroll != 0.0f)
+//         {
+//             Debug.Log("Scrolllllll");
+//             mainCamera.orthographicSize -= scroll * pinchSpeed;
+//             mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, minOrthoSize, maxOrthoSize); // Giới hạn kích thước góc nhìn
+//         }
+// #endif
+//#if UNITY_ANDROID || UNITY_IOS
+        // Kiểm tra xem người dùng có vuốt trên màn hình không
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            // Lấy vị trí mới của ngón tay
+            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 
-        // Kéo camera
-        HandleDrag();
-    }
+            // Tính toán vị trí mới của camera dựa trên vị trí mới của ngón tay và tốc độ di chuyển
+            newPos = new Vector3(-touchDeltaPosition.x * dragSpeed * Time.deltaTime, 0, -touchDeltaPosition.y * dragSpeed * Time.deltaTime);
 
-    void HandlePinchZoom()
-    {
+            // Di chuyển camera, nhưng chỉ thay đổi trục x và z, không thay đổi trục y
+            mainCamera.transform.Translate(newPos, Space.World);
+        }
+
+        // Kiểm tra xem người dùng có pinch để phóng to/thu nhỏ không
         if (Input.touchCount == 2)
         {
+            // Lấy vị trí hiện tại của cả hai ngón tay
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
 
+            // Lấy vị trí của các ngón tay ở frame trước
             Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
             Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-            float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
 
-            float difference = currentMagnitude - prevMagnitude;
+            // Tính toán khoảng cách giữa các ngón tay ở frame trước và hiện tại
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
-            ZoomCamera(-difference * zoomSpeed);
+            // Tính toán sự thay đổi tỉ lệ (phóng to/thu nhỏ)
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            // Áp dụng phóng to/thu nhỏ vào camera
+            mainCamera.orthographicSize += deltaMagnitudeDiff * pinchSpeed * Time.deltaTime;
+            mainCamera.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minOrthoSize, maxOrthoSize); // Giới hạn kích thước góc nhìn
         }
-    }
-
-    void HandleDrag()
-    {
-        if (Input.touchCount == 1)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                dragOrigin = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Moved && dragOrigin != null)
-            {
-                Vector2 touchDelta = touch.position - (Vector2)dragOrigin;
-                Vector3 newPosition = mainCamera.transform.position - new Vector3(touchDelta.x, touchDelta.y, 0f) * dragSpeed * Time.deltaTime;
-                mainCamera.transform.position = newPosition;
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                dragOrigin = null;
-            }
-        }
-    }
-
-    void ZoomCamera(float increment)
-    {
-        mainCamera.orthographicSize += increment;
-
-        mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, minZoomDistance, maxZoomDistance);
+//#endif
+       
     }
 
 }

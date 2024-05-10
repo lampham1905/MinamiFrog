@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 // by nt.Dev93
 namespace ntDev
@@ -31,10 +32,29 @@ namespace ntDev
       
         EVENT_POPUP_SHOW,
         EVENT_POPUP_CLOSE,
-        EVENT_FX,
+        
         
         SHOWADDBUILDING,
         SHOWBUILDING,
+        MOVECAMERATOTARGET,
+        BUILDBUILDING,
+        HIDEADDBUILDING,
+        SHOWSHOP,
+        INITPATH,
+        ADDPATH,
+        SHOWUPGRADE,
+        UPDATE_SATISFACTION,
+        UPDATE_MONEY,
+        UPDATE_VILLAGERS,
+        UPDATE_BEAUTY,
+        UPDATE_YOUTH,
+        UPDATE_ELDER,
+        UPDATE_GOLBIN,
+        SHOW_BTN,
+        HIDE_BTN,
+        START_DAY,
+        END_DAY,
+        SPAWN_FROG
     }
 
     public static class ManagerEvent

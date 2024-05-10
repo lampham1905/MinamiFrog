@@ -100,7 +100,7 @@ namespace Lam.zGame.Core_game.Core_DataDefinition.UI
         private IEnumerator PostInit()
         {
             
-            btnAddBuilding.onClick.AddListener(ShowAddBuildingPanel);
+            
             //m_HorizontalSnapScrollView.onIndexChanged += OnScrollIndex_Changed;
             //m_HorizontalSnapScrollView.onScrollEnd += OnScrollEnd;
             //m_HorizontalSnapScrollView.onScrollStart += OnScrollStart;

@@ -6,8 +6,9 @@ using Debug = UnityEngine.Debug;
 
 namespace Lam.zGame.Core_game.Core.Utilities.Frameworks.Data
 {
-    public class ListData<T> : FunData
+    public class ListData<T> : FunData 
     {
+        
         private List<T> mValues;
         private List<T> mDefaultValues;
         private bool mChanged;
@@ -168,5 +169,7 @@ namespace Lam.zGame.Core_game.Core.Utilities.Frameworks.Data
         {
             return mValues;
         }
+       
     }
+   
 }

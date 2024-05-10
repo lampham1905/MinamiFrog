@@ -115,7 +115,8 @@ namespace Lam.zGame.Core_game.Core.Utilities.Frameworks.Data
                     }
 
                 foreach (var g in groups)
-                    g.DataSaver.Save(false);
+                    g.DataSaver.Save(pForce);
+                    //g.DataSaver.Save(false);
 
                 if (groups.Count > 0)
                     mLastTimeSave = Time.time;
