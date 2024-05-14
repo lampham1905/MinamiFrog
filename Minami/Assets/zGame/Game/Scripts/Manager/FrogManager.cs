@@ -59,11 +59,17 @@ namespace Lam
             lisAction.Remove(actionMax);
             float timePerAction = (totalTime - actionMax.timeAction) / lisAction.Count;
             WaitForSeconds waitForPerAction = new WaitForSeconds(timePerAction);
+            float timeTemp = 0;
             for (int i = 0; i < lisAction.Count; i++)
             {
                 lisAction[i].frog.gameObject.SetActive(true);
                 lisAction[i].frog.frogMove.FollowRoute( lisAction[i].routeFrog);
-                yield return waitForPerAction;
+                while (timeTemp <= timePerAction)
+                {
+                    timeTemp += Time.deltaTime * TimeManager.SALE_TIME;
+                    yield return null;
+                }
+                timeTemp -= timePerAction;
             }
             actionMax.frog.gameObject.SetActive(true);
             actionMax.frog.frogMove.FollowRoute(actionMax.routeFrog);

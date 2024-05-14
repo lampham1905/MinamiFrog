@@ -14,9 +14,9 @@ namespace Lam
             m_animator.CrossFadeInFixedTime(animName, time);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            m_animator.SetFloat("SpeedAnim", TimeManager.SALE_TIME);
+            m_animator.speed = TimeManager.SALE_TIME;
         }
     }
 }

@@ -28,8 +28,9 @@ using System.Collections.Generic;
 	public const int BUILDING_11_YOKAITREE = 11;
 	public const int BUILDING_12_SERVICECENTER = 12;
 	public const int BUILDING_HOUSE = 1;
-	public const int BUILDING_SERVICE = 2;
-	public const int BUILDING_SPECIAL = 3;
+	public const int BUILDING_SHOP = 2;
+	public const int BUILDING_SERVICE = 3;
+	public const int BUILDING_SPECIAL = 4;
 	#endregion
 	#region type_upgrade
 	public const int TYPE_UPGRADE_NORMAL = 1;

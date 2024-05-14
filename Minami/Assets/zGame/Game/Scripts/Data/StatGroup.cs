@@ -19,7 +19,7 @@ namespace Lam
         {
             satisfaction = AddData(new FloatData(0));
             money = AddData(new FloatData(1, 9999));
-            villagers = AddData(new IntegerData(2, 1));
+            villagers = AddData(new IntegerData(2, 0));
             beauty = AddData(new FloatData(3));
             youth = AddData(new FloatData(4));
             elder = AddData(new FloatData(5));

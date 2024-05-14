@@ -94,26 +94,50 @@ namespace Lam
         }
         IEnumerator ExecuteListAction(List<Node> listNode, int Lane)
         {
-            while (true)
+            float time = 0;
+            // while (true)
+            // {
+            //     if (isCompleteCoroutine)
+            //     {
+            //         if (listNode.Count > 1)
+            //         {
+            //             yield return StartCoroutine(FollowPathCor(GameManager.Instance.m_pathManager.GetPath(listNode[0], listNode[1], Lane)));
+            //             if (listNode[1].idBuiling != -1)
+            //             {
+            //                 while (time <= GameConfig.TIME_PER_INTERACT_BUILDING)
+            //                 {
+            //                     time += Time.deltaTime * TimeManager.SALE_TIME;
+            //                 }
+            //
+            //                 time -= GameConfig.TIME_PER_INTERACT_BUILDING;
+            //                 yield return null;
+            //             }
+            //
+            //             listNode.Remove(listNode[0]);
+            //         }
+            //         else
+            //         {
+            //             break;
+            //         }
+            //     }
+            //     yield return null;
+            // }
+            if (this.listNode.Count > 1)
             {
-                if (isCompleteCoroutine)
+                for (int i = 0; i < listNode.Count - 1; i++)
                 {
-                    if (listNode.Count > 1)
+                    yield return StartCoroutine(FollowPathCor(GameManager.Instance.m_pathManager.GetPath(listNode[i], listNode[i+1], Lane)));
+                    if (listNode[i+1].idBuiling != -1)
                     {
-                        yield return StartCoroutine(FollowPathCor(GameManager.Instance.m_pathManager.GetPath(listNode[0], listNode[1], Lane)));
-                        if (listNode[1].idBuiling != -1)
+                        while (time <= GameConfig.TIME_PER_INTERACT_BUILDING)
                         {
-                            yield return _waitForPerBuilding;
+                            time += Time.deltaTime * TimeManager.SALE_TIME;
+                            yield return null;
                         }
-
-                        listNode.Remove(listNode[0]);
-                    }
-                    else
-                    {
-                        break;
+                    
+                        time -= GameConfig.TIME_PER_INTERACT_BUILDING;
                     }
                 }
-                yield return null;
             }
             this.gameObject.SetActive(false);
         }

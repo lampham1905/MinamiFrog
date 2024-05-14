@@ -136,6 +136,11 @@ public class BuildingSystem : MonoBehaviour
       return res;
    }
 
+   // public List<IBuilding> GetListBuildingShop()
+   // {
+   //    
+   // }
+
   
   
   

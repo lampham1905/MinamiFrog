@@ -169,17 +169,16 @@ namespace Lam
             
             int indexStart = start.gridY;
             int indexEnd = target.gridY;
-            Debug.Log(indexStart + "-------" + indexEnd);
             if (indexStart <= indexEnd)
             {
-                for(int i = indexStart; i <= indexEnd; i++)
+                for(int i = indexStart + 1; i <= indexEnd - 1; i++)
                 {
                     res.Add(listLane[Lane].listNode[i]);
                 }
             }
             else
             {
-                for(int i = indexStart; i >= indexEnd; i--)
+                for(int i = indexStart - 1; i >= indexEnd + 1; i--)
                 {
                     res.Add(listLane[Lane].listNode[i]);
                 }
@@ -269,23 +268,124 @@ namespace Lam
         {
             List<IBuilding> listServiceBuilding = GameManager.Instance.buildingSystem.GetListBuildingService();
             List<IBuilding> res = new List<IBuilding>();
-            //int randomAmount = Random.Range(0, listServiceBuilding.Count);
-            int randomAmount = listServiceBuilding.Count- 1;
-            List<int> listIndex = new List<int>();
+            int randomAmount = Random.Range(0, listServiceBuilding.Count);
+            int amountTypeShopLevel = 0;
+            int shopLevelTemp = 0;
             for (int i = 0; i < listServiceBuilding.Count; i++)
             {
-                listIndex.Add(i);
+                if (listServiceBuilding[i].shopData.shopLevel != shopLevelTemp)
+                {
+                    shopLevelTemp = listServiceBuilding[i].shopData.shopLevel;
+                    amountTypeShopLevel += 1;
+                }
             }
 
-            for (int i = 0; i < randomAmount; i++)
+            switch (amountTypeShopLevel)
             {
-                int randomIndex = Random.Range(0, listIndex.Count);
-                res.Add(listServiceBuilding[listIndex[randomIndex]]);
-                listIndex.Remove(listIndex[randomIndex]);
+                case 1:
+                    for (int i = 0; i < listServiceBuilding.Count; i++)
+                    {
+                        if (listServiceBuilding[i].shopData.shopLevel != 0)
+                        {
+                            if (IsGoShop(90))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                        else
+                        {
+                            if (IsGoShop(50))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    int levelMax = 0;
+                    for (int i = 0; i < listServiceBuilding.Count; i++)
+                    {
+                        if (listServiceBuilding[i].shopData.shopLevel > levelMax)
+                        {
+                            levelMax = listServiceBuilding[i].shopData.shopLevel;
+                        }
+                    }
+
+                    for (int i = 0; i < listServiceBuilding.Count; i++)
+                    {
+                        if (listServiceBuilding[i].shopData.shopLevel >= levelMax)
+                        {
+                            if (IsGoShop(80))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                        else if(listServiceBuilding[i].shopData.shopLevel < levelMax && listServiceBuilding[i].shopData.shopLevel > 0)
+                        {
+                            if (IsGoShop(60))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                        else
+                        {
+                            if (IsGoShop(50))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < listServiceBuilding.Count; i++)
+                    {
+                        if (listServiceBuilding[i].shopData.shopLevel == 1)
+                        {
+                            if (IsGoShop(50))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                        else if (listServiceBuilding[i].shopData.shopLevel == 2)
+                        {
+                            if (IsGoShop(70))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                        else if (listServiceBuilding[i].shopData.shopLevel == 3)
+                        {
+                            if (IsGoShop(90))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                        else
+                        {
+                            if (IsGoShop(50))
+                            {
+                                res.Add(listServiceBuilding[i]);
+                            }
+                        }
+                    }
+                    break;
             }
+           
             return res;
         }
-        
+
+        bool IsGoShop(float ratio)
+        {
+            int random = Random.Range(1, 101);
+            if (random <= ratio)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public RouteFrog GetRandomRouteFrog(TypeFrog typeFrog)
         {
             RouteFrog routeFrog = new RouteFrog();

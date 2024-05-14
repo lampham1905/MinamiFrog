@@ -18,8 +18,7 @@ namespace Lam
             {
                 VARIABLE.onClick.AddListener(() =>
                 {
-                    Ajust(m_listTimeScale[index]);
-                    index++;
+                    Ajust(m_listTimeScale[m_listBtn.IndexOf(VARIABLE)]);
                 });
             }
         }

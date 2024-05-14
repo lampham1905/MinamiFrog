@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Lam.zGame.Core_game.Core.Utilities.Frameworks.Data;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Lam
 {
@@ -35,6 +36,10 @@ namespace Lam
         public List<int> price_item;
         public List<int> profit;
         public List<int> item_selected;
+        public List<int> perfect_recipe_youth;
+        public List<int> perfect_recipe_elder;
+        public List<int> perfect_profit_youth;
+        public List<int> perfect_profit_elder;
         public int shopLevel;
         public string name;
         public void SetInfo(ShopDefinition shop)
@@ -45,8 +50,26 @@ namespace Lam
             this.shopLevel = shop.shop_Level;
             this.name = shop.name;
             this.item_selected = new List<int>();
-            Debug.Log(shop.name);
+            if (shop.type == 1)
+            {
+                // random recipe
+                this.perfect_recipe_youth = LogicAPI.GetRandomPerfectRecipeShop1(shop.amount_item, shop.perfect_recipe_youth);
+                this.perfect_recipe_elder = LogicAPI.GetRandomPerfectRecipeShop1(shop.amount_item, shop.perfect_recipe_elder);
+                // random profit
+                this.perfect_profit_youth = LogicAPI.GetRandomPerfectProfitShop1(shop.perfect_profit_youth);
+                this.perfect_profit_elder = LogicAPI.GetRandomPerfectProfitShop1(shop.perfect_profit_elder);
+            }
+            else
+            {
+                // random recipe
+                this.perfect_recipe_youth = LogicAPI.GetRandomPerfectRecipeShop2();
+                this.perfect_recipe_elder = LogicAPI.GetRandomPerfectRecipeShop2();
+                // random profit
+                this.perfect_profit_youth = LogicAPI.GetRandomPerfectProfitShop2(this.perfect_recipe_youth, shop.perfect_profit_youth);
+                this.perfect_profit_elder = LogicAPI.GetRandomPerfectProfitShop2(this.perfect_recipe_elder, shop.perfect_profit_elder);
+            }
         }
+        
     }
 
    

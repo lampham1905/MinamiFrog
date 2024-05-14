@@ -50,7 +50,7 @@ namespace Lam
                 }
             }
             
-            SALE_TIME = timeScale;
+            
         }
 
         void StartDay(object e)
@@ -74,6 +74,7 @@ namespace Lam
             UpdateUI();
             ManagerEvent.RaiseEvent(EventCMD.SHOW_BTN);
             ManagerEvent.RaiseEvent(EventCMD.END_DAY);
+            TimeManager.SALE_TIME = 1;
         }
         void UpdateUI()
         {

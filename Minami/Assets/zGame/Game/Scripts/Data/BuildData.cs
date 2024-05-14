@@ -32,6 +32,10 @@ namespace Lam
         public int shop_Level;
         public string des;
         public string name;
+        public List<int> perfect_recipe_youth;
+        public List<int> perfect_recipe_elder;
+        public List<int> perfect_profit_youth;
+        public List<int> perfect_profit_elder;
     }
 
     [Serializable]
