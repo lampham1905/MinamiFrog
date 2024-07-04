@@ -23,11 +23,11 @@ public class BuildingRef
 public class BuildingSystem : MonoBehaviour
 {
 
-   
+
 
    public List<IBuilding> listBuilding = new List<IBuilding>();
    public List<BuildingRef> listBuildingRef = new List<BuildingRef>();
-   public static IBuilding buildingAddCurrent ;
+   public static IBuilding buildingAddCurrent;
    public GameObject gbbuildingAddCurrent;
    public float posXCurrent = 0f;
    private List<UIUpgradeShopPiece> _mListUIUpgradeCustomize = new List<UIUpgradeShopPiece>();
@@ -40,15 +40,15 @@ public class BuildingSystem : MonoBehaviour
    }
    private void Start()
    {
-     
-      
+
+
    }
 
-  
+
    void ShowBuilding(object e)
    {
       int AmountBrick = 0;
-     ListData<BuildingData> data = e as ListData<BuildingData>;
+      ListData<BuildingData> data = e as ListData<BuildingData>;
       for (int i = 0; i < data.Count; i++)
       {
          GameObject g = Instantiate(GetBuildingRefById(data[i].idBulding).gameObject);
@@ -65,7 +65,7 @@ public class BuildingSystem : MonoBehaviour
       }
       ManagerEvent.RaiseEvent(EventCMD.INITPATH, listBuilding);
    }
-   
+
    void MoveCam()
    {
       if (posXCurrent == 0)
@@ -100,7 +100,7 @@ public class BuildingSystem : MonoBehaviour
       }
    }
 
-   
+
    void HideAddBuilding(object e = null)
    {
       if (gbbuildingAddCurrent != null)
@@ -118,7 +118,7 @@ public class BuildingSystem : MonoBehaviour
          posXCurrent -= building.size;
          UIGamePlay.Instance.UIUpgradeShop.GetUIPiece(building);
          DataInGame.Instance.BuildingGroup.AddBonusStat(data);
-         ManagerEvent.RaiseEvent(EventCMD.ADDPATH,building.size);
+         ManagerEvent.RaiseEvent(EventCMD.ADDPATH, building.size);
       }
       gbbuildingAddCurrent = null;
    }
@@ -141,7 +141,7 @@ public class BuildingSystem : MonoBehaviour
    //    
    // }
 
-  
-  
-  
+
+
+
 }

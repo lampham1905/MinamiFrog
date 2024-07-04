@@ -6,6 +6,7 @@ using UnityEngine;
 public class IBuilding : MonoBehaviour
 {
     public Transform Achor;
+    public GameObject ModelBuilding;
     public int size;
     public int id;
     public int idBuilding;
@@ -26,11 +27,11 @@ public class IBuilding : MonoBehaviour
     }
     public virtual void Build()
     {
-        
+
     }
 
     public virtual void Interact()
     {
-        
+
     }
 }

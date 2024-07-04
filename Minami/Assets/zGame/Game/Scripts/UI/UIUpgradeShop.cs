@@ -14,7 +14,7 @@ namespace Lam
         [SerializeField] private Camera _camera;
         public void Init()
         {
-            SetUpInit(uiPiece, 10,this.transform.parent);
+            SetUpInit(uiPiece, 10, this.transform.parent);
         }
 
         public void GetUIPiece(IBuilding building)
@@ -27,7 +27,7 @@ namespace Lam
                 ui.SetInit(building.isUpgrade, building.isShop);
             }
             _mListUIUpgradeShopPieces.Add(ui);
-            g.transform.position = (building.transform.position) + new Vector3(-0.5f ,2f, -1.5f);
+            g.transform.position = (building.transform.position) + new Vector3(0, 2f, 3f);
             g.gameObject.SetActive(true);
         }
     }

@@ -15,10 +15,11 @@ namespace Lam
         public IBuilding building;
         [FormerlySerializedAs("uiUpgradeCustomize")] public UIUpgradeShop uiUpgradeShop;
         [SerializeField] private JustButton btnUpgrade;
-        [FormerlySerializedAs("btnCustomize")] [SerializeField] private JustButton btnShop;
+        [FormerlySerializedAs("btnCustomize")][SerializeField] private JustButton btnShop;
 
         private void Start()
         {
+
             btnShop.onClick.AddListener(() =>
             {
                 ManagerEvent.RaiseEvent(EventCMD.SHOWSHOP, building.buildingData);
@@ -33,7 +34,8 @@ namespace Lam
         {
             btnUpgrade.gameObject.SetActive(!isUpgrade);
             btnShop.gameObject.SetActive(isCustomize);
+
         }
-        
+
     }
 }

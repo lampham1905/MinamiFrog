@@ -47,20 +47,20 @@ namespace Lam
         void Init(object e)
         {
             listBulidng = e as List<IBuilding>;
-             int amount = 0; 
-             for (int i = 0; i < listBulidng.Count; i++)
-             {
-                    amount += listBulidng[i].size;
-                    listIndexNodeBuilding.Add(amount-1);
-             }
+            int amount = 0;
+            for (int i = 0; i < listBulidng.Count; i++)
+            {
+                amount += listBulidng[i].size;
+                listIndexNodeBuilding.Add(amount - 1);
+            }
             for (int i = 0; i < posZLane.Count; i++)
             {
                 PathLane lane = new PathLane();
                 listLane.Add(lane);
             }
             CreatPath(amount);
-        }        
-    
+        }
+
         public void CreatPath(int amount)
         {
             amountCurrent = amount + 1;
@@ -70,15 +70,15 @@ namespace Lam
                 float posX = posXCurrent;
                 for (int j = 0; j < amount + 1; j++)
                 {
-                    Vector3 worldPostion = new Vector3(posX, 0.5f, posZLane[i]);
+                    Vector3 worldPostion = new Vector3(posX, .1f, posZLane[i]);
                     GameObject g = Instantiate(pathPiece, worldPostion, Quaternion.identity);
                     g.name = i.ToString() + "," + j.ToString();
-                    Node node  = new Node(false, worldPostion, i, j, g);
+                    Node node = new Node(false, worldPostion, i, j, g);
                     m_aStarPathfinding.grid[i, j] = node;
-                    listLane[i].listNode.Add( m_aStarPathfinding.grid[i, j]);
+                    listLane[i].listNode.Add(m_aStarPathfinding.grid[i, j]);
                     posX -= GameConfig.WIDTHSTONE;
                 }
-        
+
                 if (i == listLane.Count - 1)
                 {
                     posXCurrent = posX;
@@ -92,7 +92,7 @@ namespace Lam
             }
         }
 
-        
+
         public void AddPath(object e)
         {
             int amountAdd = (int)e;
@@ -104,7 +104,7 @@ namespace Lam
                     tempNode[i, j] = m_aStarPathfinding.grid[i, j];
                 }
             }
-        
+
             m_aStarPathfinding.grid = new Node[listLane.Count, amountCurrent + amountAdd];
             for (int i = 0; i < listLane.Count; i++)
             {
@@ -113,13 +113,13 @@ namespace Lam
                     m_aStarPathfinding.grid[i, j] = tempNode[i, j];
                 }
             }
-        
+
             for (int i = 0; i < listLane.Count; i++)
             {
                 float posX = posXCurrent;
                 for (int j = amountCurrent; j < amountCurrent + amountAdd; j++)
                 {
-                    Vector3 worldPostion = new Vector3(posX, 0.5f, posZLane[i]);
+                    Vector3 worldPostion = new Vector3(posX, .1f, posZLane[i]);
                     GameObject g = Instantiate(pathPiece, worldPostion, Quaternion.identity);
                     g.name = i.ToString() + "," + j.ToString();
                     Node node = new Node(false, worldPostion, i, j, g);
@@ -133,7 +133,7 @@ namespace Lam
                 }
             }
             amountCurrent += amountAdd;
-            listBulidng[listBulidng.Count -1].node = listLane[0].listNode[amountCurrent - 2];
+            listBulidng[listBulidng.Count - 1].node = listLane[0].listNode[amountCurrent - 2];
             listLane[0].listNode[amountCurrent - 2].idBuiling = listBulidng[listBulidng.Count - 1].id;
             listIndexNodeBuilding.Add(amountCurrent - 2);
         }
@@ -166,19 +166,19 @@ namespace Lam
             //---------------
             List<Node> res = new List<Node>();
             res.Add(start);
-            
+
             int indexStart = start.gridY;
             int indexEnd = target.gridY;
             if (indexStart <= indexEnd)
             {
-                for(int i = indexStart + 1; i <= indexEnd - 1; i++)
+                for (int i = indexStart + 1; i <= indexEnd - 1; i++)
                 {
                     res.Add(listLane[Lane].listNode[i]);
                 }
             }
             else
             {
-                for(int i = indexStart - 1; i >= indexEnd + 1; i--)
+                for (int i = indexStart - 1; i >= indexEnd + 1; i--)
                 {
                     res.Add(listLane[Lane].listNode[i]);
                 }
@@ -196,12 +196,12 @@ namespace Lam
             float distance = 0;
             if (listNode != null)
             {
-                for (int i = 0; i < listNode.Count-1; i++)
+                for (int i = 0; i < listNode.Count - 1; i++)
                 {
                     distance += Vector3.Distance(listNode[i].worldPosition, listNode[i + 1].worldPosition);
                 }
             }
-            return distance; 
+            return distance;
         }
 
         Node GetRandomNode(TypeFrog typeFrog)
@@ -259,7 +259,7 @@ namespace Lam
                         return listLane[randomLane].listNode[0];
                     }
                     break;
-                  
+
             }
             return null;
         }
@@ -270,12 +270,13 @@ namespace Lam
             List<IBuilding> res = new List<IBuilding>();
             int randomAmount = Random.Range(0, listServiceBuilding.Count);
             int amountTypeShopLevel = 0;
-            int shopLevelTemp = 0;
+            List<int> shopLevelTemp = new List<int> { 0 };
             for (int i = 0; i < listServiceBuilding.Count; i++)
             {
-                if (listServiceBuilding[i].shopData.shopLevel != shopLevelTemp)
+
+                if (!shopLevelTemp.Contains(listServiceBuilding[i].shopData.shopLevel))
                 {
-                    shopLevelTemp = listServiceBuilding[i].shopData.shopLevel;
+                    shopLevelTemp.Add(listServiceBuilding[i].shopData.shopLevel);
                     amountTypeShopLevel += 1;
                 }
             }
@@ -320,7 +321,7 @@ namespace Lam
                                 res.Add(listServiceBuilding[i]);
                             }
                         }
-                        else if(listServiceBuilding[i].shopData.shopLevel < levelMax && listServiceBuilding[i].shopData.shopLevel > 0)
+                        else if (listServiceBuilding[i].shopData.shopLevel < levelMax && listServiceBuilding[i].shopData.shopLevel > 0)
                         {
                             if (IsGoShop(60))
                             {
@@ -370,7 +371,7 @@ namespace Lam
                     }
                     break;
             }
-           
+            Debug.Log(res.Count);
             return res;
         }
 
@@ -423,17 +424,17 @@ namespace Lam
                 {
                     for (int i = 0; i < routeFrog.listBuilding.Count - 1; i++)
                     {
-                        res += GetTimePath(GetPath(routeFrog.listBuilding[i].node, routeFrog.listBuilding[i+1].node, routeFrog.Lane));
+                        res += GetTimePath(GetPath(routeFrog.listBuilding[i].node, routeFrog.listBuilding[i + 1].node, routeFrog.Lane));
                         res += GameConfig.TIME_PER_INTERACT_BUILDING;
                     }
                 }
             }
             return res;
         }
-        
-    }
-    
- 
 
-  
+    }
+
+
+
+
 }
